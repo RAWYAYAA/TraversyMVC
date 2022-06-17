@@ -23,4 +23,6 @@
         die('View does not exist');
       }
     }
+    
+
   }

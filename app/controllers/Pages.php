@@ -1,24 +1,68 @@
 <?php
   class Pages extends Controller {
     public function __construct(){
-     
+      $this->livreModel = $this->model('Livre');
+
     }
     
     public function index(){
+      $countLivre = $this->livreModel->countLivre();
+      $countUser = $this->livreModel->countUser();
+      $countDemande = $this->livreModel->countDemande();
       $data = [
-        'title' => 'SharePosts',
-        'description' => 'Simple social network built on the TraversyMVC PHP framework'
+        'countLivre' => count($countLivre),
+        'countUser' => count($countUser),
+        'countDemande' => count($countDemande)
       ];
-     
-      $this->view('pages/index', $data);
+      // print_r($data);
+      $this->view('admin/index', $data);
+    }
+    public function indexstaf(){
+      $livres=$this->livreModel->getLivres();
+      $data=[
+        'livres'=>$livres
+      ];
+      $this->view('staff/index',$data);
+    }
+    // public function signup(){
+      
+    //   $this->view('pages/signup');
+    // }
+    public function crudusers(){
+
+      $this->view('admin/cruduser');
+    }
+    public function demande(){
+
+      $this->view('admin/demande');
+    }
+    public function demandes(){
+
+      $this->view('staff/demande');
+    }
+    public function crudlivres(){
+
+      $this->view('pages/crudlivres');
+    }
+    public function landinguser(){
+
+      $this->view('pages/landinguser');
+    }
+    public function demander(){
+
+      $this->view('staff/demander');
+    }
+    // public function demande(){
+
+    //   $this->view('staff/demander');
+    // }
+    public function voirdetails(){
+
+      $this->view('pages/voirdetails');
+    }
+    public function rechercher(){
+
+      $this->view('pages/rechercher');
     }
 
-    public function about(){
-      $data = [
-        'title' => 'About Us',
-        'description' => 'App to share posts with other users'
-      ];
-
-      $this->view('pages/about', $data);
-    }
   }
