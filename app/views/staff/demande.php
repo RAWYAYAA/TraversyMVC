@@ -10,6 +10,7 @@
     <table class="table  table-responsive">
         <thead>
             <tr>
+                
                 <th scope="col">image</th>
                 <th scope="col" class="text-muted">Titre de livre</th>
                 <th scope="col" class="text-muted">statu</th>
